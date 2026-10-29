@@ -82,19 +82,46 @@ html[data-opened="1"] #gate{display:none}
 .glow{position:absolute;left:4%;right:4%;bottom:50%;height:150%;opacity:0;transition:opacity .8s;pointer-events:none;
   background:radial-gradient(ellipse at 50% 100%,rgba(255,226,130,.95),rgba(255,226,130,0) 68%)}
 .box{position:absolute;left:6%;bottom:0;width:88%;height:62%;border-radius:0 0 14px 14px;
-  background:linear-gradient(90deg,#C21F33,#E8404F 45%,#C21F33);box-shadow:0 18px 30px rgba(0,0,0,.35)}
+  background:#EA3344;box-shadow:0 18px 30px rgba(0,0,0,.35)}
 .box::before{content:"";position:absolute;left:0;right:0;top:0;height:16%;background:#6E0C1B;opacity:0;transition:opacity .5s .2s}
-.band{position:absolute;left:50%;width:22%;transform:translateX(-50%);background:linear-gradient(90deg,#D99A00,#FFD54A 50%,#D99A00);transition:transform .55s,opacity .55s}
+.band{position:absolute;left:50%;width:22%;transform:translateX(-50%);background:#E7E4D0;transition:transform .55s,opacity .55s}
 .box .band{top:0;bottom:0}
 .lid{position:absolute;left:-1%;width:102%;height:28%;bottom:60%;z-index:3;transform-origin:0 100%;
   transition:transform .9s cubic-bezier(.3,1.4,.5,1)}
-.lid-top{position:absolute;inset:0;border-radius:12px;background:linear-gradient(90deg,#CF2438,#F04A5A 45%,#CF2438);box-shadow:0 4px 10px rgba(0,0,0,.25)}
+.lid-top{position:absolute;inset:0;border-radius:8px;background:#EE3A4A;box-shadow:0 4px 0 #C81E30,0 8px 14px rgba(0,0,0,.25)}
 .lid .band{top:0;bottom:0;z-index:1}
-.bow{position:absolute;left:50%;top:-40px;width:82px;transform:translateX(-50%);z-index:4;background:none;border:0;padding:0;
-  animation:tease 1.8s ease-in-out infinite;transition:transform .7s,opacity .6s}
+.bow{position:absolute;left:50%;top:-52px;width:150px;transform:translateX(-50%);z-index:4;background:none;border:0;padding:0;
+  transition:transform .7s,opacity .6s}
 .bow svg{display:block;width:100%;height:auto;filter:drop-shadow(0 3px 3px rgba(0,0,0,.3))}
 @keyframes tease{0%,100%{transform:translateX(-50%) rotate(0)}30%{transform:translateX(-50%) rotate(-6deg)}60%{transform:translateX(-50%) rotate(5deg)}}
-.gift.untied .bow{animation:none;transform:translate(-50%,-46px) rotate(24deg) scale(1.25);opacity:0;pointer-events:none}
+.bow{touch-action:none;cursor:grab;-webkit-user-select:none;user-select:none}
+.gift.dragging .bow{animation:none;transition:none;cursor:grabbing}
+.gift.dragging .band{transition:none;transform:translateX(-50%) scaleX(calc(1 - var(--p,0) * .75))}
+.gift.springback .bow{animation:none;transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+.gift.springback .band{transform:translateX(-50%) scaleX(1)}
+.gift.tugged .bow .bowsvg{animation:tug2 .5s}
+@keyframes tug2{25%{transform:translateX(-5px)}60%{transform:translateX(5px)}85%{transform:translateX(-2px)}}
+@keyframes tug{25%{transform:translateX(-50%) translateY(-10px) rotate(-10deg)}60%{transform:translateX(-50%) translateY(2px) rotate(8deg)}}
+
+.bowsvg{display:block;width:100%;height:auto;overflow:visible;filter:drop-shadow(0 3px 3px rgba(0,0,0,.3))}
+.bow .loop{transition:transform .5s,opacity .5s}
+.bow .lL{transform-origin:60px 40px;transform:translate(calc(var(--s,0) * -.75px),calc(var(--s,0) * .1px)) rotate(calc(var(--s,0) * -.55deg))}
+.bow .lR{transform-origin:60px 40px;transform:translate(calc(var(--s,0) * .75px),calc(var(--s,0) * .1px)) rotate(calc(var(--s,0) * .55deg))}
+.bow .knot{transform-origin:60px 40px;transform:scale(calc(1 - var(--p,0) * .5));transition:transform .5s,opacity .5s}
+.gift.dragging .bow .loop,.gift.dragging .bow .knot{transition:none}
+.gift.untied .bow .lL{transform:translate(-62px,-14px) rotate(-42deg);opacity:0}
+.gift.untied .bow .lR{transform:translate(62px,-14px) rotate(42deg);opacity:0}
+.gift.untied .bow .knot{transform:scale(0);opacity:0}
+.bow .dotp{position:absolute;z-index:2;top:27px;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.92);
+  box-shadow:0 0 0 7px rgba(255,255,255,.28),0 3px 8px rgba(0,0,0,.3);transition:opacity .4s}
+.bow .dL{left:-5px;animation:dotL 1.9s ease-in-out infinite}
+.bow .dR{right:-5px;animation:dotR 1.9s ease-in-out infinite}
+@keyframes dotL{0%,12%{transform:translateX(6px) scale(.8);opacity:0}28%{opacity:1;transform:translateX(0) scale(1)}78%{opacity:1;transform:translateX(-30px) scale(1)}100%{transform:translateX(-34px) scale(.9);opacity:0}}
+@keyframes dotR{0%,12%{transform:translateX(-6px) scale(.8);opacity:0}28%{opacity:1;transform:translateX(0) scale(1)}78%{opacity:1;transform:translateX(30px) scale(1)}100%{transform:translateX(34px) scale(.9);opacity:0}}
+.gift.dragging .bow .dL{animation:none;opacity:1;transform:translateX(calc(var(--s,0) * -.75px))}
+.gift.dragging .bow .dR{animation:none;opacity:1;transform:translateX(calc(var(--s,0) * .75px))}
+.gift.untied .bow .dotp{animation:none;opacity:0}
+.gift.untied .bow{animation:none;pointer-events:none}
 .gift.untied .band{transform:translateX(-50%) scaleX(0);opacity:0}
 .gift.open .lid{transform:translate(-16%,-78%) rotate(-26deg)}
 .gift.open .glow{opacity:1}
@@ -102,8 +129,20 @@ html[data-opened="1"] #gate{display:none}
 
 .below{display:grid;width:100%;min-height:215px;align-items:start}
 .below>*{grid-area:1/1;transition:opacity .45s,transform .45s,visibility .45s}
-.hint{text-align:center;font-weight:800;font-size:17px;letter-spacing:.02em;animation:breathe 1.8s ease-in-out infinite}
-@keyframes breathe{50%{opacity:.55}}
+.hintbox{display:grid;justify-items:center;gap:12px}
+.hint{margin:0;text-align:center;font-weight:800;font-size:18px;letter-spacing:.02em;padding:8px 18px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3)}
+.meter{width:min(220px,70%);height:8px;border-radius:99px;background:rgba(255,255,255,.2);overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,#FFE08A,#FFC83D);border-radius:99px}
+.bandh{position:absolute;left:0;right:0;top:34%;height:17%;background:linear-gradient(180deg,#D99A00,#FFD54A 50%,#D99A00);transform-origin:50% 50%;transition:transform .55s,opacity .55s}
+.gift.untied .bandh{transform:scaleY(0);opacity:0}
+.gift.dragging .bandh{transition:none;transform:scaleY(calc(1 - var(--p,0) * .75))}
+.gift.springback .bandh{transform:scaleY(1)}
+.demo{position:absolute;left:50%;top:-52px;width:0;height:0;pointer-events:none;z-index:6}
+.demo .hand{position:absolute;left:0;top:0;font-size:38px;line-height:1;transform:translate(-30%,34px);animation:handup 2s ease-in-out infinite;filter:drop-shadow(0 3px 4px rgba(0,0,0,.35))}
+.demo .chev{position:absolute;left:0;top:-58px;font-size:30px;line-height:1;font-weight:900;color:#FFE08A;transform:translateX(-50%);animation:chev 2s ease-in-out infinite}
+@keyframes handup{0%{opacity:0;transform:translate(-30%,44px)}18%{opacity:1}70%{opacity:1;transform:translate(-30%,-34px)}100%{opacity:0;transform:translate(-30%,-44px)}}
+@keyframes chev{0%,20%{opacity:0;transform:translate(-50%,10px)}60%{opacity:1}100%{opacity:0;transform:translate(-50%,-14px)}}
+.gift.dragging .demo,.gift.untied .demo{display:none}
 .msg{text-align:center;padding:18px 16px;border-radius:20px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);
   backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;transform:translateY(16px);visibility:hidden}
 .msg h2{margin:0 0 6px;font-size:21px}
@@ -115,7 +154,7 @@ html[data-opened="1"] #gate{display:none}
 .gbtn.nudge{animation:wiggle .6s}
 @keyframes wiggle{20%{transform:rotate(-4deg) scale(1.06)}50%{transform:rotate(4deg) scale(1.08)}80%{transform:rotate(-2deg)}}
 .note{min-height:1.5em;margin:10px 0 0;font-size:14px;color:rgba(255,255,255,.85)}
-.gate[data-stage="untied"] .hint,.gate[data-stage="ask"] .hint,.gate[data-stage="reveal"] .hint{opacity:0;visibility:hidden}
+.gate[data-stage="untied"] .hintbox,.gate[data-stage="ask"] .hintbox,.gate[data-stage="reveal"] .hintbox{opacity:0;visibility:hidden}
 .gate[data-stage="ask"] .msg{opacity:1;transform:none;visibility:visible}
 .gate[data-stage="reveal"] .stage{opacity:0;visibility:hidden}
 
@@ -277,21 +316,19 @@ dialog::backdrop{background:rgba(30,10,14,.55);backdrop-filter:blur(2px)}
       <div class="box"><i class="band"></i></div>
       <div class="lid">
         <div class="lid-top"></div><i class="band"></i>
-        <button class="bow" id="bow" type="button" aria-label="拆開絲帶">
-          <svg viewBox="0 0 80 52" aria-hidden="true">
-            <defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE08A"/><stop offset="1" stop-color="#E0A100"/></linearGradient></defs>
-            <path d="M40 32L26 50 38 45Z" fill="url(#gg)" stroke="#B98100" stroke-width="1"/>
-            <path d="M40 32L54 50 42 45Z" fill="url(#gg)" stroke="#B98100" stroke-width="1"/>
-            <path d="M40 30C22 -4 -4 8 6 28 12 42 30 38 40 30Z" fill="url(#gg)" stroke="#B98100" stroke-width="1.2"/>
-            <path d="M40 30C58 -4 84 8 74 28 68 42 50 38 40 30Z" fill="url(#gg)" stroke="#B98100" stroke-width="1.2"/>
-            <circle cx="40" cy="30" r="7" fill="#F5C21B" stroke="#B98100" stroke-width="1.2"/>
+        <button class="bow" id="bow" type="button" aria-label="將蝴蝶結向左右拉開（鍵盤：按 Enter）">
+          <i class="dotp dL" aria-hidden="true"></i><i class="dotp dR" aria-hidden="true"></i>
+          <svg class="bowsvg" viewBox="0 0 120 70" aria-hidden="true">
+            <g class="loop lL"><path d="M60 40C44 4 6 6 10 34 13 58 44 56 60 40Z" fill="#EAE7D4"/><path d="M60 40C46 22 26 20 16 30 22 50 46 50 60 40Z" fill="#CFCDB8" opacity=".8"/></g>
+            <g class="loop lR"><path d="M60 40C76 4 114 6 110 34 107 58 76 56 60 40Z" fill="#EAE7D4"/><path d="M60 40C74 22 94 20 104 30 98 50 74 50 60 40Z" fill="#CFCDB8" opacity=".8"/></g>
+            <circle class="knot" cx="60" cy="40" r="9" fill="#E3E0CB"/>
           </svg>
         </button>
       </div>
     </div>
 
     <div class="below">
-      <p class="hint" id="hint">🎀 點一點絲帶，拆開佢</p>
+      <div class="hintbox"><p class="hint" id="hint">↔ 用手指將蝴蝶結向左右拉開</p><div class="meter" aria-hidden="true"><i id="meter"></i></div></div>
       <div class="msg" id="msg">
         <h2>🎂 Horace，生日快樂！</h2>
         <p>Carmen 為你準備咗一份好特別嘅禮物。</p>
@@ -979,7 +1016,7 @@ function showGate() {
   timers.forEach(clearTimeout); timers = [];
   root.removeAttribute('data-opened');
   gift.classList.remove('untied', 'open');
-  gate.dataset.stage = 'closed'; $('#note').textContent = '';
+  gate.dataset.stage = 'closed'; $('#note').textContent = ''; $('#hint').textContent = '↔ 用手指將蝴蝶結向左右拉開'; $('#meter').style.width = '0'; $('#bow').style.removeProperty('--s'); gift.classList.remove('dragging','springback','tugged');
   document.title = '🎁 俾 Horace 嘅禮物';
   buildPetals(); setInert(true); scrollTo(0, 0);
 }
@@ -999,7 +1036,58 @@ function untie() {
 }
 const WAITS = ['好呀，慢慢嚟～我哋等你 💕', '真係未準備好？禮物都開咗蓋㗎喇 🎁', '再等等就唔夠時間收行李喇 🧳', '喂～Carmen 都等到有啲心急喇 😆'];
 let waitIdx = 0;
-$('#bow').addEventListener('click', untie);
+const HINT0 = '↔ 用手指將蝴蝶結向左右拉開', meter = $('#meter');
+const bow = $('#bow'), hint = $('#hint'), PULL = 70;
+const ptrs = new Map(); let maxSpread = 0;
+function spreadNow() {
+  const a = [...ptrs.values()];
+  if (a.length >= 2) {                                   // two fingers: pinch-out
+    const d0 = Math.hypot(a[0].x0 - a[1].x0, a[0].y0 - a[1].y0), d = Math.hypot(a[0].x - a[1].x, a[0].y - a[1].y);
+    return Math.max(0, (d - d0) / 2);
+  }
+  const q = a[0]; return q ? Math.abs(q.x - q.x0) : 0;  // one finger: drag a loop outward
+}
+function setSpread(s) {
+  const p = Math.min(s / PULL, 1);
+  bow.style.setProperty('--s', s.toFixed(1)); gift.style.setProperty('--p', p); meter.style.width = (p * 100) + '%';
+  return p;
+}
+function bowReset(animated) {
+  ptrs.clear(); bow.style.removeProperty('--s'); gift.style.removeProperty('--p'); meter.style.width = '0';
+  gift.classList.remove('dragging');
+  if (animated) { gift.classList.add('springback'); later(() => gift.classList.remove('springback'), 380); }
+}
+bow.addEventListener('pointerdown', (e) => {
+  if (gate.dataset.stage !== 'closed') return;
+  ptrs.set(e.pointerId, { x0: e.clientX, y0: e.clientY, x: e.clientX, y: e.clientY });
+  try { bow.setPointerCapture(e.pointerId); } catch {}
+  gift.classList.add('dragging'); gift.classList.remove('tugged', 'springback');
+});
+bow.addEventListener('pointermove', (e) => {
+  const q = ptrs.get(e.pointerId); if (!q) return;
+  q.x = e.clientX; q.y = e.clientY;
+  const s = spreadNow(); maxSpread = Math.max(maxSpread, s);
+  const p = setSpread(s);
+  hint.textContent = p > .55 ? '就快解開喇…再拉開啲！' : HINT0;
+  if (s >= PULL) {
+    const ids = [...ptrs.keys()]; ptrs.clear();
+    ids.forEach(id => { try { bow.releasePointerCapture(id); } catch {} });
+    bowReset(false); void bow.offsetWidth; untie();
+    if (navigator.vibrate) navigator.vibrate(30);
+  }
+});
+const endDrag = (e) => {
+  if (!ptrs.has(e.pointerId)) return;
+  ptrs.delete(e.pointerId); if (ptrs.size) return;
+  const tapOnly = maxSpread < 10; maxSpread = 0;
+  bowReset(true);
+  if (tapOnly) { gift.classList.add('tugged'); hint.textContent = '要將蝴蝶結向左右拉開，唔係點一下㗎 ↔'; }
+  else hint.textContent = '差少少～再向兩邊拉開啲！';
+};
+bow.addEventListener('pointerup', endDrag);
+bow.addEventListener('pointercancel', endDrag);
+/* keyboard / screen-reader fallback: Enter or Space (click with detail 0) */
+bow.addEventListener('click', (e) => { if (e.detail === 0) untie(); });
 $('#btn-wait').addEventListener('click', () => {
   $('#note').textContent = WAITS[waitIdx++ % WAITS.length];
   const b = $('#btn-ready'); b.classList.remove('nudge'); void b.offsetWidth; b.classList.add('nudge');
