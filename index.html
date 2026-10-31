@@ -100,7 +100,7 @@ html[data-opened="1"] #gate{display:none}
 @keyframes rattle{0%,38%,100%{transform:none}6%{transform:translateY(-7px) rotate(-3deg)}12%{transform:translateY(-3px) rotate(3deg)}18%{transform:translateY(-6px) rotate(-2deg)}24%{transform:translateY(-2px) rotate(2deg)}30%{transform:translateY(-3px)}}
 .mlines{opacity:0;animation:ml 2.6s ease-in-out infinite}
 @keyframes ml{0%,2%,36%,100%{opacity:0}5%,32%{opacity:1}}
-.g-glow{opacity:0;transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(.2);transition:opacity .4s .25s,transform .6s .25s cubic-bezier(.3,1.4,.5,1)}
+.g-glow{opacity:0;transform-box:fill-box;transform-origin:50% 100%;transform:scale(.3);transition:opacity .3s .25s,transform .55s .25s cubic-bezier(.3,1.5,.5,1)}
 .g-in{opacity:0;transition:opacity .3s .3s}
 .gate:not([data-stage="closed"]) .giftbtn{animation:none}
 .gate[data-stage="opening"] .giftbtn{animation:boing .5s ease-out}
@@ -360,7 +360,7 @@ dialog::backdrop{background:rgba(14,43,64,.62)}
   <div id="petals" aria-hidden="true"></div>
 
   <div class="stage">
-    <div class="ph" aria-hidden="true"><span>HAPPY BIRTHDAY HORACE!</span></div>
+    <div class="ph" aria-hidden="true"><span>HAPPY BIRTHDAY</span><span>OSAKA 04.22–26</span></div>
     <div class="panel">
       <div class="rays" aria-hidden="true"></div>
       <svg class="deco deco-top" viewBox="0 0 360 120" aria-hidden="true"><g transform="rotate(-22 62 96)"><rect x="58" y="94" width="8" height="32" rx="4" fill="#6B4A3A"/><path d="M62 96L6.0 81.0A58 58 0 0 1 13.8 63.8Z" fill="#D8402B"/><path d="M62 96L13.8 63.8A58 58 0 0 1 26.7 50.0Z" fill="#FFF8E6"/><path d="M62 96L26.7 50.0A58 58 0 0 1 43.4 41.1Z" fill="#D8402B"/><path d="M62 96L43.4 41.1A58 58 0 0 1 62.0 38.0Z" fill="#FFF8E6"/><path d="M62 96L62.0 38.0A58 58 0 0 1 80.6 41.1Z" fill="#D8402B"/><path d="M62 96L80.6 41.1A58 58 0 0 1 97.3 50.0Z" fill="#FFF8E6"/><path d="M62 96L97.3 50.0A58 58 0 0 1 110.2 63.8Z" fill="#D8402B"/><path d="M62 96L110.2 63.8A58 58 0 0 1 118.0 81.0Z" fill="#FFF8E6"/><path d="M6.0 81.0A58 58 0 0 1 118.0 81.0" fill="none" stroke="#F1A63A" stroke-width="4.1" stroke-linecap="round"/><path d="M62 96L45.2 91.5A17.4 17.4 0 0 1 78.8 91.5Z" fill="#F1A63A"/><circle cx="62" cy="96" r="4.1" fill="#6B4A3A"/></g><g transform="rotate(22 298 96)"><rect x="294" y="94" width="8" height="32" rx="4" fill="#6B4A3A"/><path d="M298 96L242.0 81.0A58 58 0 0 1 249.8 63.8Z" fill="#D8402B"/><path d="M298 96L249.8 63.8A58 58 0 0 1 262.7 50.0Z" fill="#FFF8E6"/><path d="M298 96L262.7 50.0A58 58 0 0 1 279.4 41.1Z" fill="#D8402B"/><path d="M298 96L279.4 41.1A58 58 0 0 1 298.0 38.0Z" fill="#FFF8E6"/><path d="M298 96L298.0 38.0A58 58 0 0 1 316.6 41.1Z" fill="#D8402B"/><path d="M298 96L316.6 41.1A58 58 0 0 1 333.3 50.0Z" fill="#FFF8E6"/><path d="M298 96L333.3 50.0A58 58 0 0 1 346.2 63.8Z" fill="#D8402B"/><path d="M298 96L346.2 63.8A58 58 0 0 1 354.0 81.0Z" fill="#FFF8E6"/><path d="M242.0 81.0A58 58 0 0 1 354.0 81.0" fill="none" stroke="#F1A63A" stroke-width="4.1" stroke-linecap="round"/><path d="M298 96L281.2 91.5A17.4 17.4 0 0 1 314.8 91.5Z" fill="#F1A63A"/><circle cx="298" cy="96" r="4.1" fill="#6B4A3A"/></g><path transform="translate(130 30) scale(1.1)" d="M0-9C1-3 3-1 9 0C3 1 1 3 0 9C-1 3-3 1-9 0C-3-1-1-3 0-9Z" fill="#FFF8E6" opacity="1"/><path transform="translate(236 22) scale(0.9)" d="M0-9C1-3 3-1 9 0C3 1 1 3 0 9C-1 3-3 1-9 0C-3-1-1-3 0-9Z" fill="#FFF8E6" opacity="1"/><path transform="translate(178 64) scale(0.7)" d="M0-9C1-3 3-1 9 0C3 1 1 3 0 9C-1 3-3 1-9 0C-3-1-1-3 0-9Z" fill="#F1A63A" opacity="1"/></svg>
@@ -379,7 +379,7 @@ dialog::backdrop{background:rgba(14,43,64,.62)}
   <rect x="26" y="100" width="148" height="108" rx="8" fill="url(#gdots)"/>
   <path d="M26 190H174V200a8 8 0 0 1-8 8H34a8 8 0 0 1-8-8Z" fill="#8E2A1C" opacity=".35"/>
   <g class="g-in"><rect x="34" y="100" width="132" height="14" rx="3" fill="#7A2417"/></g>
-  <g class="g-glow"><path d="M100 108L-84 59L-67 17Z" fill="#FFF8E6" opacity=".92"/><path d="M100 108L-46 -14L-12 -45Z" fill="#FFE680" opacity=".92"/><path d="M100 108L20 -64L63 -78Z" fill="#FFF8E6" opacity=".92"/><path d="M100 108L100 -82L145 -77Z" fill="#FFE680" opacity=".92"/><path d="M100 108L180 -64L219 -40Z" fill="#FFF8E6" opacity=".92"/><path d="M100 108L246 -14L270 24Z" fill="#FFE680" opacity=".92"/><path d="M100 108L284 59L290 104Z" fill="#FFF8E6" opacity=".92"/></g>
+  <g class="g-glow"><path d="M100 106L-2.4 87.9L2.9 68.7Z" fill="#F8D82B"/><path d="M100 106L8.0 57.5L18.9 40.8Z" fill="#F1A63A"/><path d="M100 106L27.2 31.8L42.7 19.2Z" fill="#F8D82B"/><path d="M100 106L53.3 13.1L72.0 5.9Z" fill="#F1A63A"/><path d="M100 106L83.9 3.2L103.9 2.1Z" fill="#F8D82B"/><path d="M100 106L116.1 3.2L135.4 8.2Z" fill="#F1A63A"/><path d="M100 106L146.7 13.1L163.6 23.7Z" fill="#F8D82B"/><path d="M100 106L172.8 31.8L185.7 47.0Z" fill="#F1A63A"/><path d="M100 106L192.0 57.5L199.6 76.0Z" fill="#F8D82B"/><circle cx="100" cy="106" r="10" fill="#F8D82B"/></g>
   <rect x="88" y="100" width="24" height="108" fill="#F1A63A"/>
   <circle cx="100" cy="158" r="23" fill="#FFF8E6"/><circle cx="100" cy="158" r="19" fill="none" stroke="#D8402B" stroke-width="2" stroke-dasharray="1.5 5" stroke-linecap="round"/>
   <text x="100" y="168" text-anchor="middle" font-size="27" font-weight="900" fill="#B52E1E">福</text>
